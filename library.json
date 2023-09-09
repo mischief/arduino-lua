@@ -1,0 +1,55 @@
+{
+  "name": "lua",
+  "version": "5.4.6+p0",
+  "description": "The Lua programming language bindings for PlatformIO",
+  "keywords": ["lua"],
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*",
+  "headers": ["lua.hpp"],
+  "build": {
+    "srcDir": "src",
+    "includeDir": "include",
+    "flags": [
+      "-DMAKE_LIB",
+      "-Iinclude",
+      "-Isrc"
+    ],
+    "srcFilter": [
+      "+<lapi.c>",
+      "+<lcode.c>",
+      "+<lctype.c>",
+      "+<ldebug.c>",
+      "+<ldo.c>",
+      "+<ldump.c>",
+      "+<lfunc.c>",
+      "+<lgc.c>",
+      "+<llex.c>",
+      "+<lmem.c>",
+      "+<lobject.c>",
+      "+<lopcodes.c>",
+      "+<lparser.c>",
+      "+<lstate.c>",
+      "+<lstring.c>",
+      "+<ltable.c>",
+      "+<ltm.c>",
+      "+<lundump.c>",
+      "+<lvm.c>",
+      "+<lzio.c>",
+      "+<ltests.c>",
+      "+<lauxlib.c>",
+      "+<lbaselib.c>",
+      "+<ldblib.c>",
+      "+<liolib.c>",
+      "+<lmathlib.c>",
+      "+<loslib.c>",
+      "+<ltablib.c>",
+      "+<lstrlib.c>",
+      "+<lutf8lib.c>",
+      "+<loadlib.c>",
+      "+<lcorolib.c>",
+      "+<linit.c>"
+    ]
+  }
+}
+
