@@ -1,8 +1,17 @@
 {
   "name": "lua",
-  "version": "5.4.6+p0",
-  "description": "The Lua programming language bindings for PlatformIO",
-  "keywords": ["lua"],
+  "version": "0.1.0",
+  "description": "The Lua programming language bindings and Sol2 for PlatformIO",
+  "authors": {
+	"name": "Nick Owens",
+	"email": "mischief@offblast.org",
+	"url": "https://github.com/mischief/"
+  },
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/mischief/arduino-lua.git"
+  },
+  "keywords": ["lua", "sol", "sol2"],
   "license": "MIT",
   "frameworks": "*",
   "platforms": "*",
