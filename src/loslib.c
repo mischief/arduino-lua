@@ -168,7 +168,7 @@ static int os_remove (lua_State *L) {
 }
 
 #ifndef ARDUINO_ARCH_ESP32
-#define rename(f1, f2) (-1)
+#define rename(f1, f2) ((void)f1, (void)f2, (-1))
 #endif
 
 static int os_rename (lua_State *L) {
