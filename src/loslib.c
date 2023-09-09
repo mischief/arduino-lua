@@ -111,22 +111,23 @@
 #define LUA_TMPNAMTEMPLATE	"/tmp/lua_XXXXXX"
 #endif
 
-#ifdef ARDUINO_ARCH_ESP32
-#define lua_tmpnam(b, e) { e = 1; }
-#else
 #define lua_tmpnam(b,e) { \
         strcpy(b, LUA_TMPNAMTEMPLATE); \
         e = mkstemp(b); \
         if (e != -1) close(e); \
         e = (e == -1); }
 
-#endif
 
 #else				/* }{ */
 
 /* ISO C definitions */
 #define LUA_TMPNAMBUFSIZE	L_tmpnam
+
+#ifndef ARDUINO_ARCH_ESP32
+#define lua_tmpnam(b, e) { e = 1; }
+#else
 #define lua_tmpnam(b,e)		{ e = (tmpnam(b) == NULL); }
+#endif
 
 #endif				/* } */
 
@@ -157,12 +158,18 @@ static int os_execute (lua_State *L) {
   }
 }
 
+#ifndef ARDUINO_ARCH_ESP32
+#define remove(f) (-1)
+#endif
 
 static int os_remove (lua_State *L) {
   const char *filename = luaL_checkstring(L, 1);
   return luaL_fileresult(L, remove(filename) == 0, filename);
 }
 
+#ifndef ARDUINO_ARCH_ESP32
+#define rename(f1, f2) (-1)
+#endif
 
 static int os_rename (lua_State *L) {
   const char *fromname = luaL_checkstring(L, 1);
@@ -189,7 +196,11 @@ static int os_getenv (lua_State *L) {
 
 
 static int os_clock (lua_State *L) {
+#ifdef ARDUINO_ARCH_ESP32
   lua_pushnumber(L, ((lua_Number)clock())/(lua_Number)CLOCKS_PER_SEC);
+#else
+  lua_pushnumber(L, ((lua_Number)(clock_t)-1)/(lua_Number)CLOCKS_PER_SEC);
+#endif
   return 1;
 }
 

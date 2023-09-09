@@ -432,7 +432,12 @@ static int ll_loadlib (lua_State *L) {
 
 
 static int readable (const char *filename) {
-  FILE *f = fopen(filename, "r");  /* try to open file */
+  FILE *f =
+#ifdef ARDUINO_ARCH_ESP32
+  fopen(filename, "r");  /* try to open file */
+#else
+  NULL;
+#endif
   if (f == NULL) return 0;  /* open failed */
   fclose(f);
   return 1;
