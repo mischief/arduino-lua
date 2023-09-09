@@ -111,11 +111,16 @@
 #define LUA_TMPNAMTEMPLATE	"/tmp/lua_XXXXXX"
 #endif
 
+#ifdef ARDUINO_ARCH_ESP32
+#define lua_tmpnam(b, e) { e = 1; }
+#else
 #define lua_tmpnam(b,e) { \
         strcpy(b, LUA_TMPNAMTEMPLATE); \
         e = mkstemp(b); \
         if (e != -1) close(e); \
         e = (e == -1); }
+
+#endif
 
 #else				/* }{ */
 
