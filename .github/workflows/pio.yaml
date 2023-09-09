@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        example: [examples/basic_lua.ino]
+        example: [examples/basic_lua.ino, examples/basic_sol.ino]
 
     steps:
       - uses: actions/checkout@v3
