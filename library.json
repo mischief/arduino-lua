@@ -11,7 +11,6 @@
     "srcDir": "src",
     "includeDir": "include",
     "flags": [
-      "-DMAKE_LIB",
       "-Iinclude",
       "-Isrc"
     ],
