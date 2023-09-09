@@ -230,6 +230,7 @@ typedef unsigned int IdxT;
 ** of a partition. (If you don't want/need this "randomness", ~0 is a
 ** good choice.)
 */
+#define l_randomizePivot() (~0)
 #if !defined(l_randomizePivot)		/* { */
 
 #include <time.h>
