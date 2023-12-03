@@ -45,10 +45,11 @@ void setup(){
 	assert(L != nullptr);
 	lua_sethook(L, debug_hook, LUA_MASKCOUNT, 50000);
 	luaL_openlibs(L);
+	luaregister_arduino(L);
 }
 
 void loop(){
-	luaL_dostring(L, "print(millis())");
+	luaL_dostring(L, "print(arduino.millis())");
 	delay(1000);
 }
 
