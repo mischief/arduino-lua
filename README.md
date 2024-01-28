@@ -6,11 +6,14 @@ Today only the [arduino espressif32](https://github.com/espressif/arduino-esp32)
 
 ## Usage
 
-To build Sol2, your project must use C++17. To remove older C++ standards and build with C++17 in platformio:
+To build Sol2, your project must use C++17. You also need to turn off Sol's use of thread-local storage if using a global sol::state.
+
+To remove older C++ standards and build with C++17 in platformio.ini:
 
 ```ini
 build_flags =
         -std=gnu++17
+        -DSOL_NO_THREAD_LOCAL=1
 
 build_unflags =
         -std=gnu++11
