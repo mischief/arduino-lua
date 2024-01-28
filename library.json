@@ -1,6 +1,6 @@
 {
   "name": "lua",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Lua programming language bindings and Sol2 for PlatformIO",
   "authors": {
 	"name": "Nick Owens",
